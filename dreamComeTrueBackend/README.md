@@ -28,11 +28,21 @@ and uses **SQLite** for local development. The same migrations can be used with 
 
 ---
 
-## 3. Setup
+## 3. Swagger / OpenAPI
+- Visit: `/api/documentation` (Here you can Show and Test Apis)
+- Rebuild docs:
+```bash
+php artisan l5-swagger:generate
+```
+---
+
+## 4. Setup
 
 From the project root:
 
 ```bash
+git clone https://github.com/ahmedmfz/dreamComeTrue.git
+
 cd dreamComeTrueBackend
 
 cp .env.example .env
