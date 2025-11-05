@@ -7,7 +7,7 @@ It includes:
 - **Frontend:** React (Vite) + Bootstrap
 - **Backend:** Laravel (latest) + MySQL
 - **API Docs:** Swagger / OpenAPI
-- **Database:** MySQL
+- **Database:** SQLite
 - **Cloud Design:** AWS EC2 + S3 (documented, not deployed)
 
 ---

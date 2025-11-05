@@ -1,7 +1,7 @@
 
 ---
 
-## 2️⃣ `PROJECT_PLAN.md`
+## `PROJECT_PLAN.md`
 
 ```md
 # Project Plan – Mini eCommerce Product Listing
@@ -75,7 +75,6 @@
 ### AWS Components (Proposed)
 
 - **EC2** – Laravel app server (Nginx + PHP-FPM).
-- **RDS (MySQL)** – main relational database.
 - **S3** – store product images (future enhancement).
 
 ---
@@ -108,7 +107,7 @@ Assume a short sprint (2–3 days).
 
 ### Developer 3 – DevOps & Documentation
 
-- Define AWS architecture (EC2, RDS, S3, CloudFront).
+- Define AWS architecture (EC2, S3, CloudFront).
 - Write deployment steps for Laravel on EC2.
 - Prepare environment configuration (.env templates).
 - Document how to run frontend and backend locally.
@@ -138,13 +137,13 @@ Assume a short sprint (2–3 days).
 
 ## 4. Deployment Plan – AWS (Proposed)
 
-### Backend – Laravel on EC2 + RDS
+### Backend – Laravel on EC2 
 
 1. **Create EC2 instance**
    - Ubuntu-based, with security group allowing HTTP/HTTPS and SSH.
 
 2. **Install dependencies**
-   - Nginx, PHP-FPM, PHP extensions, Composer, Git.
+   - Nginx, PHP-FPM, PHP extensions, Composer, Git, mysql client (for testing/MySQL tools).
 
 3. **Deploy Laravel**
    - Clone the `backend` repo into `/var/www/backend`.
@@ -155,7 +154,7 @@ Assume a short sprint (2–3 days).
      - `APP_ENV=production`
      - `APP_KEY` (generated)
      - `DB_CONNECTION=mysql`
-     - `DB_HOST` = RDS endpoint
+     - `DB_HOST` = RDS endpoint (or MySQL server)
      - `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
    - Run:
      - `composer install --no-dev`
@@ -165,26 +164,28 @@ Assume a short sprint (2–3 days).
    - Create a server block pointing to `public/index.php`.
    - Enable HTTPS using ACM/Load Balancer or Certbot (if needed).
 
-### Database – RDS (MySQL)
+---
 
-- Create an RDS MySQL instance.
-- Allow incoming connections only from the EC2 security group.
-- Run `php artisan migrate` from EC2 to build schema.
+### Frontend – React (Host on same EC2 – simple)
 
-### Frontend – React
-
-**Option 1 – Host on same EC2 (simple):**
-
-- `npm run build` in `frontend/`.
+- Run `npm run build` in `frontend/`.
 - Copy the `dist/` folder to `/var/www/frontend`.
-- Serve `dist/` as static site via Nginx.
+- Configure Nginx to serve `/var/www/frontend` as a static site.
 
-**Option 2 – S3 + CloudFront (recommended for scale):**
+Example Nginx server block (simplified):
 
-- Build frontend: `npm run build`.
-- Upload `dist/` output to an S3 bucket with static website hosting enabled.
-- Configure CloudFront distribution to serve the S3 bucket.
-- Point a custom domain (e.g. `app.example.com`) via Route 53 to CloudFront.
+```nginx
+server {
+    listen 80;
+    server_name your-frontend-domain.com;
+
+    root /var/www/frontend;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
 
 ---
 
