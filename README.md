@@ -38,9 +38,11 @@ It includes:
 
 ---
 
-## 3. How to Run – BackEnd (Laravel)
+## 3. How to Run 
 
 ```bash
+## How to Run – BackEnd (Laravel)
+git clone https://github.com/ahmedmfz/dreamComeTrue.git
 cd dreamComeTrueBackend
 
 cp .env.example .env
@@ -52,9 +54,10 @@ php artisan migrate
 php artisan serve
 ---
 
-## 4. How to Run – FrontEnd (React)
+## How to Run – FrontEnd (React)
 
 ```bash
+git clone https://github.com/ahmedmfz/dreamComeTrue.git
 cd dreamComeTrueFrontEnd
 
 npm install

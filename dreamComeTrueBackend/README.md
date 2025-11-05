@@ -7,7 +7,7 @@ It exposes REST endpoints for:
 - Listing products
 - Creating products
 
-and uses **SQLite** for local development. The same migrations can be used with MySQL/RDS on AWS.
+and uses **SQLite** for local development. The same migrations can be used with MySQL on AWS.
 
 ---
 

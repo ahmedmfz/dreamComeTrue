@@ -21,7 +21,7 @@
 - **SQLite (Local Development)**
   - Very easy to set up for a small demo.
   - File-based, no extra installation required.
-  - The same migrations can later be used with MySQL on AWS RDS.
+  - The same migrations can later be used with MySQL on AWS.
 
 - **MySQL on AWS RDS (Production – Proposed)**
   - Managed, scalable relational database.
@@ -66,20 +66,17 @@
     - `product_name`
     - `price`
     - `category`
-    - `in_stock` or `stock_status`
+    - `stock_status`
     - timestamps
 
 - Production design:
-  - The same schema migrated to MySQL on AWS RDS.
+  - The same schema migrated to MySQL on AWS.
 
 ### AWS Components (Proposed)
 
 - **EC2** – Laravel app server (Nginx + PHP-FPM).
 - **RDS (MySQL)** – main relational database.
 - **S3** – store product images (future enhancement).
-- **CloudFront** – CDN in front of S3 (and optionally the frontend build).
-- **Route 53** – DNS and custom domain (optional).
-- **IAM** – roles & policies to allow EC2 to access S3 securely.
 
 ---
 
@@ -118,7 +115,6 @@ Assume a short sprint (2–3 days).
 - Write project documentation:
   - README
   - This project plan
-- (Optional) Prepare a short demo video and CI/CD pipeline outline.
 
 ### Rough Timeline
 
