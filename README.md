@@ -38,10 +38,10 @@ It includes:
 
 ---
 
-## 3. How to Run 
+## 3. How to Run Project
 
 ```bash
-## How to Run – BackEnd (Laravel)
+## BackEnd (Laravel)
 git clone https://github.com/ahmedmfz/dreamComeTrue.git
 cd dreamComeTrueBackend
 
@@ -54,7 +54,7 @@ php artisan migrate
 php artisan serve
 ---
 
-## How to Run – FrontEnd (React)
+## FrontEnd (React)
 
 ```bash
 git clone https://github.com/ahmedmfz/dreamComeTrue.git
